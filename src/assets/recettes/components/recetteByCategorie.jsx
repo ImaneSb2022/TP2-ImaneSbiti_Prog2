@@ -16,8 +16,8 @@ const RecetteByCategorie = () => {
 		queryKey: ["meals", params.name],
 		queryFn: () => recettesCategoriesService.getRecetteByCategorie(params.name),
 	});
-    console.log('params.name : ' , params.name);
-    console.log(data);
+    //console.log('params.name : ' , params.name);
+    //console.log(data);
 	return (
 		<Container fluid className='min-vh-100 d-grid'>
 			<FetchState isLoading={isLoading} isError={isError} error={error}>

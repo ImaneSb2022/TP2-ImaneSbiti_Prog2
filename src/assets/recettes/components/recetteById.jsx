@@ -27,8 +27,10 @@ const RecetteById = (props) => {
 	const handleClick = (index) => {
 	  if (index === active) {
 		setActive(NO_ACCORDION_SELECTED);
+		
 		return;
 	  }
+	  ingredients();
 	  setActive(index);
 	};
   
@@ -66,9 +68,26 @@ const RecetteById = (props) => {
 		queryFn: () => recettesCategoriesService.GetRecetteById(params.id),
 	});
 
-    console.log('params.id : ' , params.id);
-	console.log('data est : ' , data);
+    //console.log('params.id : ' , params.id);
+	//console.log('data est : ' , data);
 	
+
+	const ingredients = () => {
+		let pop = "{meals.strMeasure20}"
+		if(pop === ""){
+			console.log('empty');
+		}
+		/*for (i = 0 ; i <= 20 ; i++){
+			console.log('hello');
+		};*/
+		console.log('hello je suis la fonction ingredients');
+	} 
+	
+	
+	
+
+
+
 	return (
 		<Container fluid className='min-vh-100 d-grid'>
 			<FetchState isLoading={isLoading} isError={isError} error={error}>
@@ -89,17 +108,28 @@ const RecetteById = (props) => {
 									<h4>Catégorie : {meals.strCategory}</h4>
 									<img src={meals.strMealThumb} alt="" className='img-thumbnail w-50 my-3'/>
 
+
+
 									<div className="accordions">
 										<AccordionWithUseEffect
 											value={1}
 											active={active}
 											onClick={handleClick}
 											title="Ingrédients"
+
 										>
-											{meals.strMeasure1} of {meals.strIngredient1}
 
 
-																			
+										<ul>
+										<li>{meals.strMeasure1} of {meals.strIngredient1}</li>
+										<li>Tea</li>
+										<li>Milk</li>
+										</ul>  
+
+
+											
+
+
 									<p><span>{meals.strMeasure2}</span> of <span>{meals.strIngredient2}</span></p>
 									<p><span>{meals.strMeasure3}</span> of <span>{meals.strIngredient3}</span></p>
 									<p><span>{meals.strMeasure4}</span> of <span>{meals.strIngredient4}</span></p>

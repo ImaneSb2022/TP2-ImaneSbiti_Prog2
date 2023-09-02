@@ -10,7 +10,7 @@ class RecettesCategoriesService {
 		if (!res.ok) throw new Error();
 		const data = await res.json();
 		return data.categories;*/
-		console.log(`${this.baseUrl}${this.endpoint}`);
+		//console.log(`${this.baseUrl}${this.endpoint}`);
 		const response = await fetch(`${this.baseUrl}${this.endpoint}?limit=${limit}&offset=${offset}`);
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 		const data = await response.json();
@@ -21,7 +21,7 @@ class RecettesCategoriesService {
 	endpoint2 = "filter.php?c=";
 	async getRecetteByCategorie(name) {
 
-		console.log(`${this.baseUrl}${this.endpoint2}${name}`);
+		//console.log(`${this.baseUrl}${this.endpoint2}${name}`);
 		
 		const response = await fetch(`${this.baseUrl}${this.endpoint2}${name}`);
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
@@ -33,8 +33,8 @@ class RecettesCategoriesService {
 	endpoint3 = "lookup.php?i=";
 	async GetRecetteById(id) {
 
-		console.log('Le lien est : ');
-		console.log(`${this.baseUrl}${this.endpoint3}${id}`);
+		//console.log('Le lien est : ');
+		//console.log(`${this.baseUrl}${this.endpoint3}${id}`);
 
 		const response = await fetch(`${this.baseUrl}${this.endpoint3}${id}`);
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
