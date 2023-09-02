@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 
 import Categories from './assets/recettes/components/recettesCategories'
-import RecetteByCategorie from './assets/recettes/components/recetteByName'
+import RecetteByCategorie from './assets/recettes/components/recetteByCategorie'
 import Recette from './assets/recettes/components/recetteById'
 
 const queryClient = new QueryClient();

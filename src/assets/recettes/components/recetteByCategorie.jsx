@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const recettesCategoriesService = new RecettesCategoriesService();
 
-const RecetteByName = () => {
+const RecetteByCategorie = () => {
 	const params = useParams();
 	const { data, isLoading, isError, error } = useQuery({
 		queryKey: ["meals", params.name],
@@ -51,4 +51,4 @@ const RecetteByName = () => {
 	)
 }
 
-export default RecetteByName
+export default RecetteByCategorie

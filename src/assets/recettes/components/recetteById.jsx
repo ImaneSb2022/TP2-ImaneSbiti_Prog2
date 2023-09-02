@@ -3,16 +3,72 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import RecettesCategoriesService from '../service/recettesCategoriesService'
 import FetchState from '../../components/FetchState/FetchState';
-import AccordionsWithUseEffect from "./AccordionsWithUseEffect";
-
-
 import Container from 'react-bootstrap/Container'
 
 
+/*Accordion */
+import { useState, useEffect } from "react"
+import AccordionWithUseEffect from "./Accordion"
+import "./accordion.css"
+/*fin accordion */AccordionWithUseEffect
 
+
+
+
+const NO_ACCORDION_SELECTED = 0;
 const recettesCategoriesService = new RecettesCategoriesService();
 
-const RecetteById = () => {
+const RecetteById = (props) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	const [active, setActive] = useState(NO_ACCORDION_SELECTED);
+
+	const handleClick = (index) => {
+	  if (index === active) {
+		setActive(NO_ACCORDION_SELECTED);
+		return;
+	  }
+	  setActive(index);
+	};
+  
+	const handleOutsideClick = (event) => {
+	  if (event.target.closest(".accordion")) {
+		return;
+	  }
+	  setActive(NO_ACCORDION_SELECTED);
+	};
+  
+	useEffect(() => {
+	  window.addEventListener("click", handleOutsideClick);
+  
+	  return () => {
+		window.removeEventListener("click", handleOutsideClick);
+	  };
+	}, []);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -47,11 +103,17 @@ const RecetteById = () => {
 									<h4>Catégorie : {meals.strCategory}</h4>
 									<img src={meals.strMealThumb} alt="" className='img-thumbnail w-50 my-3'/>
 
-									<AccordionsWithUseEffect />
+									<div className="accordions">
+										<AccordionWithUseEffect
+											value={1}
+											active={active}
+											onClick={handleClick}
+											title="Ingrédients"
+										>
+											{meals.strMeasure1} of {meals.strIngredient1}
 
 
-									
-									<p><span id='span'>{meals.strMeasure1}</span> of <span>{meals.strIngredient1}</span></p>
+																			
 									<p><span>{meals.strMeasure2}</span> of <span>{meals.strIngredient2}</span></p>
 									<p><span>{meals.strMeasure3}</span> of <span>{meals.strIngredient3}</span></p>
 									<p><span>{meals.strMeasure4}</span> of <span>{meals.strIngredient4}</span></p>
@@ -74,7 +136,18 @@ const RecetteById = () => {
 
 
 
-									<p>{meals.strInstructions}</p>
+										</AccordionWithUseEffect>
+										
+										<AccordionWithUseEffect
+											value={2}
+											active={active}
+											onClick={handleClick}
+											title="Instructions"
+										>
+											{meals.strInstructions}
+										</AccordionWithUseEffect>
+									</div>
+
 								</div>
 								
 							</div>
