@@ -22,20 +22,6 @@ const RecetteById = (props) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	const [active, setActive] = useState(NO_ACCORDION_SELECTED);
 
 	const handleClick = (index) => {
