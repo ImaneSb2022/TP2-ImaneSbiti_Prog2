@@ -1,0 +1,82 @@
+h1, h3, h2{
+    font-family: 'Lilita One', cursive;
+    
+    color: #228b22;
+}
+
+h2, h1{
+    text-align: center;
+}
+
+p{
+    font-size: 12px;
+}
+
+.categorie,
+.meals{
+    background-color: #cbffa0;
+}
+
+.categorie img{
+    text-align: center;
+}
+.categorie-text{
+    align-self: center;
+}
+
+.categorie-title{
+    text-align: center;
+}
+
+.categorie-title_link, .meals-title_link{
+    color: darkmagenta;
+    text-decoration: none;
+}
+
+.detail-meal{
+    background-color: #cbffa0;
+    padding: 20px;
+
+}
+
+.detail-meal_title{
+    width: 30%;
+}
+
+.detail-meal_title img{
+    margin-top: 20px;
+}
+
+.detail-meal-Row{
+    width: 100%;
+}
+
+.detail-meal_ingredients{
+    width: 65%;
+}
+
+/** ACCORDION  ***/
+
+.accordion__button {
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding: 1rem 0;
+    text-align: left;
+    width: 100%;
+    background-color: #0f640f;
+    padding: 10px;
+    margin: 5px 0;
+    color: #FFF;
+}
+
+.accordion__content {
+max-height: 0;
+overflow: hidden;
+}
+
+.accordion.active .accordion__content{
+max-height: 100%;
+}
