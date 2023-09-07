@@ -18,7 +18,7 @@ class RecettesCategoriesService {
 	}
 
 
-	endpoint2 = "filter.php?c=";
+	/*endpoint2 = "filter.php?c=";
 	async getRecetteByCategorie(name) {
 
 		//console.log(`${this.baseUrl}${this.endpoint2}${name}`);
@@ -27,7 +27,7 @@ class RecettesCategoriesService {
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 		const data = await response.json();
 		return data.meals;
-	}
+	}*/
 
 
 	endpoint3 = "lookup.php?i=";

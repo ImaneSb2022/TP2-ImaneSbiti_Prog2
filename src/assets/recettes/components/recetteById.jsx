@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import RecettesCategoriesService from '../service/recettesCategoriesService'
+import RecettesCategoriesService from '../service/recetteIdService'
 import FetchState from '../../components/FetchState/FetchState'
 import './style/MealDBStyle.css'
 
@@ -13,7 +13,6 @@ import Col from "react-bootstrap/Col"
 /*Accordion */
 import { useState, useEffect } from "react"
 import AccordionWithUseEffect from "./Accordion"
-//import "./accordion.css"
 
 const NO_ACCORDION_SELECTED = 0;
 const recettesCategoriesService = new RecettesCategoriesService();
@@ -22,16 +21,28 @@ const RecetteById = (props) => {
 
 	const [active, setActive] = useState(NO_ACCORDION_SELECTED);
 
-
 	/* handleclick for ingredients */
 	const handleClick1 = (index) => {
 		if (index === active) {
 			setActive(NO_ACCORDION_SELECTED);
 			return;
 		}
-		ingredients();
+
+		/* fonction qui regroupe les ingrédients et mesures */	
+		const ingredientsAndMesures = [];
+		for (let i = 1; i < 21; i++) {
+			const ingredientItem = data[0][`strIngredient${i}`];
+			const mesureItem = data[0][`strMeasure${i}`];
+			if (!ingredientItem || !mesureItem) {
+				break;
+			}
+			ingredientsAndMesures.push(`${mesureItem} of ${ingredientItem}`);
+		}
+		console.log(ingredientsAndMesures);
+		ingredientsToListItems();
 		setActive(index);
 	};
+
 	/* handleclick for instructions */
 	const handleClick2 = (index) => {
 		if (index === active) {
@@ -62,101 +73,72 @@ const RecetteById = (props) => {
 		queryFn: () => recettesCategoriesService.GetRecetteById(params.id),
 	});
 
-    //console.log('params.id : ' , params.id);
-	console.log('data est : ' , data);
+	const ingredientsToListItems = () => {
 
-	const ingredients = () => {
 		for (let i in data) {
+			if((data[i].strIngredient9 === "" || data[i].strIngredient9 === " ") && (data[i].strMeasure9 === "" || data[i].strMeasure9 === " ")){
+				delete data[i].strIngredient9;
+				delete data[i].strMeasure9;
+				document.getElementById("li9").remove();
+				}
 			if((data[i].strIngredient10 === "" || data[i].strIngredient10 === " ") && (data[i].strMeasure10 === "" || data[i].strMeasure10 === " ")){
 				delete data[i].strIngredient10;
 				delete data[i].strMeasure10;
-				console.log('data deleted : ' , data);
-				let element10 = document.getElementById("li10");
-				element10.remove();
-
+				document.getElementById("li10").remove();
 				}
 			if((data[i].strIngredient11 === "" || data[i].strIngredient11 === " ") && (data[i].strMeasure11 === "" || data[i].strMeasure11 === " ")){
 				delete data[i].strIngredient11;
 				delete data[i].strMeasure11;
-				console.log('data deleted : ' , data);
-				let element11 = document.getElementById("li11");
-				element11.remove();
-
+				document.getElementById("li11").remove();
 				}
-
 			if((data[i].strIngredient12 === "" || data[i].strIngredient12 === " ") && (data[i].strMeasure12 === "" || data[i].strMeasure12 === " ")){
 				delete data[i].strIngredient12;
 				delete data[i].strMeasure12;
-				console.log('data deleted : ' , data);
-				let element12 = document.getElementById("li12");
-				element12.remove();
-
+				document.getElementById("li12").remove();
 				}
-
 			if((data[i].strIngredient13 === "" || data[i].strIngredient13 === " ") && (data[i].strMeasure13 === "" || data[i].strMeasure13 === " ")){
 				delete data[i].strIngredient13;
 				delete data[i].strMeasure13;
-				console.log('data deleted : ' , data);
-				let element13 = document.getElementById("li13");
-				element13.remove();
-
+				document.getElementById("li13").remove();
 				}
-
 			if((data[i].strIngredient14 === "" || data[i].strIngredient14 === " ") && (data[i].strMeasure14 === "" || data[i].strMeasure14 === " ")){
 				delete data[i].strIngredient14;
 				delete data[i].strMeasure14;
-				console.log('data deleted : ' , data);
-				let element14 = document.getElementById("li14");
-				element14.remove();
-
+				document.getElementById("li14").remove();
 				}
-
 			if((data[i].strIngredient15 === "" || data[i].strIngredient15 === " ") && (data[i].strMeasure15 === "" || data[i].strMeasure15 === " ")){
 				delete data[i].strIngredient15;
 				delete data[i].strMeasure15;
-				let element15 = document.getElementById("li15");
-				element15.remove();
-
+				document.getElementById("li15").remove();
 				}
 			if((data[i].strIngredient16 === "" || data[i].strIngredient16 === " ") && (data[i].strMeasure16 === "" || data[i].strMeasure16 === " ")){
 				delete data[i].strIngredient16;
 				delete data[i].strMeasure16;
-				let element16 = document.getElementById("li16");
-				element16.remove();
-
+				document.getElementById("li16").remove();
 				}
 			if((data[i].strIngredient17 === "" || data[i].strIngredient17 === " ") && (data[i].strMeasure17 === "" || data[i].strMeasure17 === " ")){
 				delete data[i].strIngredient17;
 				delete data[i].strMeasure17;
-				let element17 = document.getElementById("li17");
-				element17.remove();
-
+				document.getElementById("li17").remove();
 				}
 			if((data[i].strIngredient18 === "" || data[i].strIngredient18 === " ") && (data[i].strMeasure18 === "" || data[i].strMeasure18 === " ")){
 				delete data[i].strIngredient18;
 				delete data[i].strMeasure18;
-				let element18 = document.getElementById("li18");
-				element18.remove();
-
+				document.getElementById("li18").remove();
 				}
 			if((data[i].strIngredient19 === "" || data[i].strIngredient19 === " ") && (data[i].strMeasure19 === "" || data[i].strMeasure19 === " ")){
 				delete data[i].strIngredient19;
 				delete data[i].strMeasure19;
-				let element19 = document.getElementById("li19");
-				element19.remove();
-
+				document.getElementById("li19").remove();
 				}
 			if((data[i].strIngredient20 === "" || data[i].strIngredient20 === " ") && (data[i].strMeasure20 === "" || data[i].strMeasure20 === " ")){
 				delete data[i].strIngredient20;
 				delete data[i].strMeasure20;
-				let element20 = document.getElementById("li20");
-				element20.remove();
-
+				document.getElementById("li20").remove();
 				}
-	
+				
 			}
-			
-		}
+	}
 
 	return (
 

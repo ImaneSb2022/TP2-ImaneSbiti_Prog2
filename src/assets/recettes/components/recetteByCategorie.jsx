@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import RecettesCategoriesService from '../service/recettesCategoriesService'
+import RecettesCategoriesService from '../service/recettesService'
 import FetchState from '../../components/FetchState/FetchState'
 import './style/MealDBStyle.css'
 import { Link } from 'react-router-dom'
